@@ -1,0 +1,114 @@
+
+.h1{
+	position:center:
+	color:#FFFEFE;
+}
+
+
+.jumbotron {
+  background-image:url('https://www.psuunderground.com/wp-content/uploads/2015/12/061014-national-friends-group-man-women-laughing-smiling-happy.png');
+  height: 525px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 50px;
+  padding-bottom: 10px:;
+}
+.navbar {
+	background-color: transparent;
+	font-size: 48px:;
+}
+.navbar navbar-header{
+	font-size: 100px
+}
+/*.navbar li {
+	color:#FFFEFE;
+}
+.navbar-nav li a:hover {
+      color: # #FFFEFE !important;
+  }
+*/
+body{
+	background-color: #9ACCEF;
+	padding:0;
+
+}
+
+#header {
+	color:#FFFEFE;
+	animation-name: letss
+}
+
+#cardOne {
+	color: white;
+	padding-top: 10px;
+}
+
+.jumbotron .container {
+  position: relative;
+  top:0px;
+  padding-bottom: 10px:;
+  
+}
+
+.jumbotron h1 {
+  color: #fff;
+  font-size: 48px;  
+  font-family: 'Shift', sans-serif;
+  font-weight: bold;
+}
+
+.jumbotron p {
+  font-size: 30px;
+  color: #fff;
+}
+
+.card-columns {
+	border-style: solid;
+	color:white;
+}
+
+
+.card{
+	border-style: none;
+	border-radius: 25px;
+	background-color: white;
+	margin-top: 20px;
+	width: 450px;
+	height: 400px;
+	margin-left: 15px;
+	
+
+}
+.card-header{
+	font-size: 48px;
+	text-align: center;
+	font-family: 'Lobster';
+}
+
+#thirdrow {
+	text-align: center
+}
+
+.title {
+  text-align: center;
+  background-color: transparent;
+  animation: sway 3s;
+  animation-direction: alternate;
+ /* animation-timing-function: cubic-bezier(.5,0.05,1,.5); */
+  animation-iteration-count: 2;
+} 
+.title h1{
+	color: #FFFEFE;
+	font-size: 48px;
+
+}
+
+@keyframes sway {
+  from { transform: translate3d(0px, 0, 0);     }
+  to   { transform: translate3d(600px, 0, 0); }
+}*/
+
+
+
+
+
