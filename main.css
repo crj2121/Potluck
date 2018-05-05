@@ -6,7 +6,7 @@
 
 
 .jumbotron {
-  background-image:url('https://www.psuunderground.com/wp-content/uploads/2015/12/061014-national-friends-group-man-women-laughing-smiling-happy.png');
+  background-image:url('./potluck.png');
   height: 525px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -108,7 +108,13 @@ body{
   to   { transform: translate3d(600px, 0, 0); }
 }*/
 
+#footer {
+  background-color: #0084FF;
+}
 
-
+.whitetext {
+  color: white;
+  font-family: 'Comic sans', sans-serif;
+}
 
 

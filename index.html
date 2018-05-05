@@ -4,44 +4,39 @@
  <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
  <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="main.css">
+  <script  src="index.js"></script>
 </head>
 <body>
-<div id="particles-js"></div> <!-- stats - count particles --> <!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib --> <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
-  
-  
+  <div id="particles-js"></div> <!-- stats - count particles --> <!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib --> <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
+  <script  src="index.js"></script>
 
-    <script  src="index.js"></script>
+  <div id="header">
+    <!-- Second navbar for categories -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <img id="logo" src="./logo.png" width="80" height="50">
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+           <li><a href="{{ url_for('index') }}">Home</a></li>
+           <li><a href="{{ url_for('memes') }}">Login</a></li>
+           <li><a href="{{ url_for('search') }}">Sign Up</a></li>
+           <li><a href="{{ url_for('breeds') }}">About</a></li>
+         </ul>
+       </div><!-- /.navbar-collapse -->
+     </div><!-- /.container -->
+   </nav><!-- /.navbar -->
+ </div>
 
 <div align='center' class="title">
-	<h1>POTLUCK <h1>
+  <img id="logo" src="./logo_text2.png" width="200" height="90">
 </div>
-
-
-<nav class="navbar">
-  <div class="container-fluid">
-  	<div class="navbar-header">
-      <a style="font-size:200%" class="navbar-brand" href="#"> </span> IssaVibe</a>
-    </div>
-   <!--  <ul class="nav navbar-nav">
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> What's hot! <span class="glyphicon glyphicon-fire"></span> <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
-        </ul>
-      </li>
-      <li class="active"><a href="#"> EmojiZone <span class="glyphicon glyphicon-globe"></span></a></li>
-      <li><a href="#">About <span class="glyphicon glyphicon-qrcode"></span></a> </li>
-    </ul> -->
-    <ul class="nav navbar-nav navbar-right"> 
-      <li><a style="font-size:200%" href="#">Help</a></li>
-      <li><a style="font-size:200%" href="#">Log Out</a></li>
-    </ul>
-  </div>
-</nav> 
 
  <div class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -50,51 +45,16 @@
         <!-- <a href="#">Learn More</a> -->
      </div>
    </div> 
- </div>
-
-	<div class="row">
-	    <div class="col-md-4">
-	 		<div class="card border-basic mb-3">
-  			<div class="card-header">Created Events</div>
-  			<div class="card-body">
-  			<p align="center" style="font-size:150%";><a href="#">BasketBall Game</a></p>
-  			</div>
-			</div>
-		  
-	     </div>
-
-		 <div class="col-md-4">
-		 	<div class="card border-basic mb-3">
-  				<div class="card-header">Invited Events</div>
-  				<div class="card-body text-danger">
-  					<p align="center" style="font-size:150%;"><a href="#">Josh's Showdown </a></p>
-  				</div>
-			</div>
-			
-		 </div>
-		<div class="col-md-4">
-			<div class="card border-basic mb-3">
-  			<div class="card-header">My Contributions</div>
-  			<div class="card-body">
-  				<table class = "row">
-					<div class="col-sm-6">
-						<p style="font-size:150%;">Paper Cups </p>
-					</div>
-					<div class="col-sm-6">
-						<p style="font-size:150%;"><a href="#">Josh's Showdown</a></p>
-					</div>
-				</table>
-    
-  			</div>
-			</div>
-			
-	   </div>
-    </div>
-
-
-
-
-
-
+<br>
 </body>
+<hr>
+<!--Footer-->
+<footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
+    <div class="container text-center text-md-left">
+        <div class="row">
+    <div class="footer-copyright py-3 text-center whitetext">
+        Copyright 2018: By Josh, Candace, Gabriel and Fredrick
+    </div>
+</footer>
+<hr>
 </html>
