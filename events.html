@@ -1,0 +1,90 @@
+<html>
+
+<head>
+ <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+ <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="main.css">
+  <script  src="index.js"></script>
+</head>
+<body>
+  <div id="particles-js"></div> <!-- stats - count particles --> <!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib --> <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
+  <script  src="index.js"></script>
+
+  <div id="header">
+    <!-- Second navbar for categories -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <img id="logo" src="./logo.png" width="80" height="50">
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+           <li><a href="output.html">About</a></li>
+           <li><a href="output.html">Events</a></li>
+           <li><a href="http://potluckapp.s3-website-us-east-1.amazonaws.com">Sign Out</a></li>
+         </ul>
+       </div><!-- /.navbar-collapse -->
+     </div><!-- /.container -->
+   </nav><!-- /.navbar -->
+ </div>
+
+<div class="container-fluid main-container">
+  <div class="col-md-3 sidebar">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Profile
+      </div>
+      <div class="panel-body">
+      <p> Name: Kofi Fredrick </p>
+        <p> Email: fkt2105 </p>
+        <p> Events Held: 5 </p>
+
+      </div>
+    </div>
+    <div class="myevents">
+    <ul class="nav nav-pills nav-stacked">
+      <li class="sidebar active"><a href="#"> Create Event </a> </li>
+    </ul>
+    </div>
+    <br>
+    <div class="panel panel-default">
+      <div class="panel-heading"> Upcoming Events <span class="glyphicon glyphicon--plus-sign"></span> 
+      </div>
+      <form name="form" method="POST" action="/dashboard">
+        <div class="input-group input-group-sm">
+          <div class="input-group-btn">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9 content">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+       My Events
+      </div>
+      <div class="panel-body data_size">
+        </table>
+      </div>
+    </div>
+  </div> 
+</div>       
+
+
+<!--Footer-->
+<footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
+    <div class="container text-center text-md-left">
+        <div class="row">
+    <div class="footer-copyright py-3 text-center whitetext">
+        Copyright 2018: By Josh, Candace, Gabriel and Fredrick
+    </div>
+</footer>
+<hr>
+</html>
