@@ -7,10 +7,14 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="main.css">
+
+  <!-- FONTS -->
+  <link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,600,500|Nunito|Lato:300,400,700' rel='stylesheet' type='text/css'>
   
 </head>
 <body>
-  <div id="particles-js"></div> <!-- stats - count particles --> <!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib --> <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
+
   <script  src="index.js"></script>
 
   <div id="header">
@@ -33,17 +37,29 @@
    </nav><!-- /.navbar -->
  </div>
 
-  <div class="col-md-12 content">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-       About
+  <div class = "wrapper">
+
+    <div class = "content">
+      <a class = "logo" href = "./events.html">EventBot</a>
+
+
+      <div id="feed">
       </div>
-      <div class="panel-body data_size">
-        </table>
-      </div>
+
+      <!-- <iframe id="spotify" src="https://embed.spotify.com/?uri=spotify:track:4th1RQAelzqgY7wL53UGQt" width="300" height="380" frameborder="0" allowtransparency="true"></iframe> -->
+
     </div>
-  </div> 
-</div>
+
+  </div>
+
+  <div class="footer">
+    <div id = "guess-form">
+        <ul id="messages"></ul>
+        <input id="input-message" placeholder="enter a message" onkeydown="if (event.keyCode == 13)
+                        document.getElementById('message-button').click()" autocomplete="off"/>
+        <button id="message-button" onclick="userMessage()">send</button>
+    </div>
+  </div>
 <script type="text/javascript" src="apiGateway-js-sdk/lib/axios/dist/axios.standalone.js"></script>
 <script type="text/javascript" src="apiGateway-js-sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
 <script type="text/javascript" src="apiGateway-js-sdk/lib/CryptoJS/rollups/sha256.js"></script>

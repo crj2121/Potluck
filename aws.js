@@ -1,5 +1,7 @@
 AWS.config.region = 'us-east-1';
 
+var cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
+
 var apigClient = null;
 
 var params = {
@@ -25,7 +27,7 @@ function getCredentials() {
             grant_type: 'authorization_code',
             redirect_uri: 'https://s3.us-east-1.amazonaws.com/potluckapp/output.html',
             code: getCode(),
-            client_id: '35j5presqtu0273l89ap9lm5bn'
+            client_id: '61p6o2cr8beppbmgpfp018stut'
         },
         success: function (data) {
             console.info(data);
@@ -47,6 +49,16 @@ function getCredentials() {
                   sessionToken: AWS.config.credentials.data.Credentials.SessionToken
                 });
             });
+            
+            var userParams = {
+              AccessToken: data.access_token /* required */
+            };
+            console.log(userParams)
+
+            cognitoidentityserviceprovider.getUser(userParams, function(err, data) {
+              if (err) console.log(err, err.stack); // an error occurred
+              else     console.log(data);           // successful response
+            });
 
         },
         error: function( jqXhr, textStatus, errorThrown ) {
@@ -54,6 +66,46 @@ function getCredentials() {
             //botMessage('Please visit Sign-In Page again. Invalid Code.');
         }
     });
+}
+
+function botMessage(bot_message) {
+    
+    if (bot_message == '') {
+        return false;
+    }
+
+    $('#feed').append($(
+        '\
+        <div class = "botMessage">\
+            <div class = "bot-text">EventBot</div>\
+            <div class="card-content">' + bot_message + '</div>\
+        </div>\
+        '
+    ));
+
+    $('#feed').scrollTop(10000);
+}
+
+function userMessage() {
+    
+    if ($('#input-message').val() == '') {
+        return false;
+    }
+
+    body["msg"] = $('#input-message').val();
+
+    $('#feed').append($(
+        '\
+        <div class = "userMessage">\
+            <div class = "user-text">You</div>\
+            <div class="card-content">' + $('#input-message').val() + '</div>\
+        </div>\
+        '
+    ));
+    
+    $('#input-message').val('');
+    $('#feed').scrollTop(10000);
+    sendMessage();
 }
 
 
@@ -66,6 +118,22 @@ function getCode()
         return result[1]
     }
 
+}
+
+function sendMessage() {
+    if (apigClient == null) {
+        botMessage('Please visit Sign-In Page again. Unable to verify identity.');
+    }
+    apigClient.chatbotPost(params, body, additionalParams)
+    .then(function(result){
+      // Add success callback code here.
+      console.log(result);
+      botMessage(result['data']);
+    }).catch( function(result){
+      // Add error callback code here.
+      console.log(result)
+      botMessage(result['data']);
+    });
 }
 
 getCredentials()
