@@ -29,7 +29,7 @@ function getCredentials() {
         },
         data: {
             grant_type: 'authorization_code',
-            redirect_uri: 'https://s3.us-east-1.amazonaws.com/potluckapp/output.html',
+            redirect_uri: 'https://s3.us-east-1.amazonaws.com/potluckapp/events.html',
             code: getCode(),
             client_id: '61p6o2cr8beppbmgpfp018stut'
         },
