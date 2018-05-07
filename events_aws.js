@@ -1,17 +1,5 @@
 var seconds = new Date() / 1000;
 
-var params = {
-};
-
-var body = {
-    "email": "jcb2254@columbia.edu",
-    "name": "Josh",
-    "username": "jcbartlett25"
-};
-
-var additionalParams = {
-};
-
 AWS.config.region = 'us-east-1';
 
 var cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
@@ -29,12 +17,15 @@ var lastrefresh = localStorage.getItem("potluck_refreshtime");
 var name = localStorage.getItem("potluck_name");
 var useremail = localStorage.getItem("potluck_useremail")
 
-if (seconds - lastrefresh >= 3600) {
+if (seconds - Number(lastrefresh) >= 3600) {
     if (getCode() == null) {
         window.location.href = 'https://potluck.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=61p6o2cr8beppbmgpfp018stut&redirect_uri=https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpotluckapp%2Fevents.html';
     }
     else{
         getCredentials();
+        $('#user_name').append(name);
+        $('#user_email').append(useremail);
+        getEvents();
     }
 }
 else {
@@ -47,6 +38,7 @@ else {
 
     $('#user_name').append(name);
     $('#user_email').append(useremail);
+    getEvents();
 }
 
 function getCredentials() {
@@ -65,7 +57,6 @@ function getCredentials() {
         },
         success: function (data) {
             console.info(data);
-            body['userID'] = data.id_token.substring(1,78);
             AWS.config.credentials = new AWS.CognitoIdentityCredentials({
                 IdentityPoolId: "us-east-1:c869e7b3-f1e2-45ec-91b6-7aaee7bfa374",
                 Logins: {
@@ -107,24 +98,30 @@ function getCredentials() {
                 user = data;
                 console.log(data)
                 localStorage.setItem("potluck_username", data.Username);
-                body["username"] = data.Username;
+                //body["username"] = data.Username;
 
                 for (let i=0; i<4; i++){
                     if (data.UserAttributes[i].Name == "email"){
                         localStorage.setItem("potluck_useremail", data.UserAttributes[i].Value);
                         useremail = data.UserAttributes[i].Value;
+                        $('#user_email').append(data.UserAttributes[i].Value);
                     }
                     if (data.UserAttributes[i].Name == "name"){
                         localStorage.setItem("potluck_name", data.UserAttributes[i].Value);
                         name = data.UserAttributes[i].Value;
+                        $('#user_name').append(data.UserAttributes[i].Value);
                     }
                 }
+                
+                
                 }
             });
 
         },
         error: function( jqXhr, textStatus, errorThrown ) {
             console.log( jqXhr );
+            alert(jqXhr.responseText);
+            window.location.href = 'https://potluck.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=61p6o2cr8beppbmgpfp018stut&redirect_uri=https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpotluckapp%2Fevents.html';
             //botMessage('Please visit Sign-In Page again. Invalid Code.');
         }
     });
@@ -152,4 +149,89 @@ function sendUser()
       console.log(result)
       //botMessage(result['data']);
     });
+}
+
+function createNewEvent()
+{
+    var params = {
+    };
+
+    var body = {
+        "name": $('#event_name').val(),
+        "eventType": $('#event_type').val(),
+        "eventTime": $('#event_time').val(),
+        "location": $('#event_loc').val(),
+        "email": useremail,
+        "eventDate": $('event_date').val()
+    };
+
+    var additionalParams = {
+    };
+
+    if (hasNull(body)) {
+        alert('Please fill out all fields')
+        return null;
+    }
+
+    apigClient.createeventPost(params, body, additionalParams)
+    .then(function(result){
+      // Add success callback code here.
+      console.log(result);
+      //botMessage(result['data']);
+    }).catch(function(result){
+      // Add error callback code here.
+      console.log(result)
+      //botMessage(result['data']);
+    });
+}
+
+function getEvents()
+{
+    var params = {
+    };
+
+    var body = {
+        "email": useremail
+    };
+
+    var additionalParams = {
+    };
+
+    apigClient.geteventsPost(params, body, additionalParams)
+    .then(function(result){
+      // Add success callback code here.
+      console.log(result);
+      for (let i=0; i<result.data.invitedEvents.length; i++){
+        $('#invited_events').append($(
+            '\
+            <li>\
+                ' + result.data.invitedEvents[i].name + '\
+            </li>\
+            '
+        ));
+      }
+      for (let i=0; i<result.data.myEvents.length; i++){
+        //$('#my_events').append(result.data.myEvents[i].name);
+        $('#my_events').append($(
+            '\
+            <li>\
+                ' + result.data.myEvents[i].name + '\
+            </li>\
+            '
+        ));
+      }
+      //botMessage(result['data']);
+    }).catch( function(result){
+      // Add error callback code here.
+      console.log(result)
+      //botMessage(result['data']);
+    });
+}
+
+function hasNull(target) {
+    for (var member in target) {
+        if (target[member] == "")
+            return true;
+    }
+    return false;
 }

@@ -90,7 +90,7 @@
             </div> 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Create</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="createNewEvent();">Create</button>
         </div>
       </div>
       
@@ -102,7 +102,9 @@
     </div>
     <br>
     <div class="panel panel-default">
-      <div class="panel-heading"> Upcoming Events <span class="glyphicon glyphicon--plus-sign"></span> 
+      <div class="panel-heading"> Invited Events <span class="glyphicon glyphicon--plus-sign"></span> 
+        <ul id="invited_events">
+        </ul>
       </div>
       <form name="form" method="POST" action="/dashboard">
         <div class="input-group input-group-sm">
@@ -120,7 +122,8 @@
        My Events
       </div>
       <div class="panel-body data_size">
-        </table>
+        <ul id="my_events">
+        </ul>
       </div>
     </div>
   </div> 
