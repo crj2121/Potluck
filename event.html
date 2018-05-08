@@ -25,7 +25,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-           <li><a href="output.html">Events</a></li>
+           <li><a href="events.html">Events</a></li>
            <li><a onclick="sign_out()">Sign Out</a></li>
          </ul>
        </div><!-- /.navbar-collapse -->
@@ -44,48 +44,31 @@
   </div>
 
 
-<div class="col-md-9 content">
+<div class="col-md-7 content">
   <div class="panel panel-default">
     <div class="panel-heading">
       Event Information
    </div>
-   <div class="panel-body data_size">
+   <div class="panel-body event_info data_size">
     <p> Hosted by: </p>
     <p> Location: </p>
     <p> Time: </p>
     <p> Event Type </p>
     <p> Event Date </p>
-    <p> Number of People </p>
   </div>
 </div>
 </div> 
 
-<div class="col-md-3 content">
+<div class="col-md-5 content">
   <div class="panel panel-default">
     <div class="panel-heading">
       Invited Guests
    </div>
-      <div class="panel-body data_size">
-    <p> </p>
-    <p> </p>
-    <p> </p>
-    <p> </p>
-    <p> </p>
-    <p> </p>
-  </div>
-</div>
-</div>
-
-<div class="col-md-3 content">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      Invite Guest
-   </div>
-      <div class="panel-body data_size">
-<div class="col-md-8">
+      <div class="panel-body invited_guests data_size">
+    <div class="col-md-8">
       <input class="form-control" type="text" id ="input" placeholder ="Guest Email">
-      <button id="item_add" type="button" onclick="invite_user()" class="btn col-md-8">Invite</button>
-</div> 
+      <button id="item_add" type="button" onclick="invite_user()" class="btn col-md-5">Invite</button>
+    </div> 
   </div>
 </div>
 </div>
