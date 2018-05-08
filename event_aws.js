@@ -71,6 +71,88 @@ function getEventInfo()
     .then(function(result){
       // Add success callback code here.
       console.log(result);
+      $('#eventName').text(result.data.name);
+      $('#host').append(result.data.createdBy);
+      $('#time').append(result.data.eventTime);
+      $('#location').append(result.data.location);
+      $('#type').append(result.data.eventType);
+      $('#date').append(result.data.eventDate);
+      handleItems(result.data.items);
+      handleComments(result.data.messages);
+      handleGuests(result.data.guests);
+      //botMessage(result['data']);
+    }).catch(function(result){
+      // Add error callback code here.
+      console.log(result);
+      alert('Not a valid event...')
+      window.location.href = 'https://s3.us-east-1.amazonaws.com/potluckapp/events.html';
+      //botMessage(result['data']);
+    });
+}
+
+function handleItems(items)
+{
+  var listContainer = $('#itemlist');
+
+  for (i in items) {
+    // add new list item
+    item = items[i]
+    listContainer.prepend('<li> '+item+ '</li>');
+    console.log(i);
+  }
+}
+function handleComments(comments)
+{
+  var listContainer = $('#Eventlist');
+
+  for (i in comments) {
+    // add new list item
+    comment = comments[i]
+    listContainer.prepend('<li> ' +comment.userEmail+ ': ' +comment.text+ '</li>');
+    console.log(i);
+  }
+}
+function handleGuests(guests)
+{
+  var listContainer = $('#guestlist');
+
+  for (i in guests) {
+    // add new list item
+    guest = guests[i]
+    listContainer.prepend('<li> '+guest+ '</li>');
+    console.log(i);
+  }
+}
+function addComment()
+{
+    var params = {
+    };
+
+    var body = {
+        "id": Number(getId()),
+        "text": $('#eventC').val(),
+        "userEmail": useremail
+    };
+
+    var additionalParams = {
+    };
+
+    if (hasNull(body)) {
+        return;
+    }
+
+    apigClient.addmessagetoeventPost(params, body, additionalParams)
+    .then(function(result){
+      // Add success callback code here.
+      console.log(result);
+      
+      var listContainer = $('#Eventlist');
+      inputValue = $('#eventC').val();
+
+      // add new list item
+      listContainer.prepend('<li> ' +useremail+ ': ' +inputValue+ '</li>');
+      // clear value input
+      $('#eventC').val('');
       //botMessage(result['data']);
     }).catch(function(result){
       // Add error callback code here.
