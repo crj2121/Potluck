@@ -138,6 +138,17 @@ body{
 
 }
 
+
+.event_info {
+  height: 200px;
+  overflow-y:auto;
+}
+
+.invited_guests {
+  height: 200px;
+  overflow-y:auto;
+}
+
 @keyframes sway {
   from { transform: translate3d(0px, 0, 0);     }
   to   { transform: translate3d(600px, 0, 0); }
