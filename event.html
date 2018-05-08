@@ -37,7 +37,7 @@
   <div class="col-md-12 sidebar">
     <div class="myevents">
       <ul class="nav nav-pills nav-stacked">
-        <li class="sidebar active"><a href="#"> Event Name </a> </li>
+        <li id="eventName" class="sidebar active">Event Name</li>
       </ul>
     </div>
     <br>
@@ -50,11 +50,11 @@
       Event Information
    </div>
    <div class="panel-body event_info data_size">
-    <p> Hosted by: </p>
-    <p> Location: </p>
-    <p> Time: </p>
-    <p> Event Type </p>
-    <p> Event Date </p>
+    <p id="host"> Hosted by: </p>
+    <p id="location"> Location: </p>
+    <p id="time"> Time: </p>
+    <p id="type"> Event Type: </p>
+    <p id="date"> Event Date: </p>
   </div>
 </div>
 </div> 
@@ -66,6 +66,7 @@
    </div>
       <div class="panel-body invited_guests data_size">
     <div class="col-md-8">
+      <ul style="list-style-type:none" id="guestlist"> </ul>
       <input class="form-control" type="text" id ="input" placeholder ="Guest Email">
       <button id="item_add" type="button" onclick="invite_user()" class="btn col-md-5">Invite</button>
     </div> 
@@ -79,7 +80,7 @@
      Items/Itinerary
    </div>
    <div class="panel-body data_size">
-    <ul style="list-style-type:none" class="list_group" id="list"> </ul>
+    <ul style="list-style-type:none" class="list_group" id="itemlist"> </ul>
     <div class="col-md-8">
       <input class="form-control" type="text" id ="input" placeholder ="Let's Party!">
       <button id="item_add" type="button" onclick="add_item()" class="btn">Add Item</button>
@@ -100,7 +101,7 @@
     <ul style="list-style-type:none" id="Eventlist"> </ul>
     <div class="col-md-8">
       <input class="form-control" type="text" id ="eventC" placeholder ="Your voice is needed!">
-      <button id="item_add" type="button" onclick="add_comment()" class="btn"> Add Comment</button>
+      <button id="item_add" type="button" onclick="addComment()" class="btn"> Add Comment</button>
     </div>  
   </div>
 </div>
