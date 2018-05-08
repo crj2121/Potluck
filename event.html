@@ -25,9 +25,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-           <li><a href="output.html">About</a></li>
            <li><a href="output.html">Events</a></li>
-           <li><a href="https://potluckapp.s3-website-us-east-1.amazonaws.com">Sign Out</a></li>
+           <li><a onclick="sign_out()">Sign Out</a></li>
          </ul>
        </div><!-- /.navbar-collapse -->
      </div><!-- /.container -->
@@ -75,7 +74,21 @@
     <p> </p>
   </div>
 </div>
+</div>
+
+<div class="col-md-3 content">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Invite Guest
+   </div>
+      <div class="panel-body data_size">
+<div class="col-md-8">
+      <input class="form-control" type="text" id ="input" placeholder ="Guest Email">
+      <button id="item_add" type="button" onclick="invite_user()" class="btn col-md-8">Invite</button>
 </div> 
+  </div>
+</div>
+</div>
 
 <div class="col-md-12 content">
   <div class="panel panel-default">
