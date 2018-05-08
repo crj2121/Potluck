@@ -17,16 +17,19 @@ var lastrefresh = localStorage.getItem("potluck_refreshtime");
 var name = localStorage.getItem("potluck_name");
 var useremail = localStorage.getItem("potluck_useremail");
 
-if (seconds - Number(lastrefresh) >= 3600) {
+if (getCode() != null) {
+    getCredentials();
+}
+else if (seconds - Number(lastrefresh) >= 3600) {
     if (getCode() == null) {
         window.location.href = 'https://potluck.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=61p6o2cr8beppbmgpfp018stut&redirect_uri=https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpotluckapp%2Fevents.html';
     }
     else{
         getCredentials();
-        $('#user_name').append(name);
-        $('#user_email').append(useremail);
-        getEvents();
+        //$('#user_name').append(name);
+        //$('#user_email').append(useremail);
         sendUser();
+        getEvents();
     }
 }
 else {
@@ -39,8 +42,9 @@ else {
 
     $('#user_name').append(name);
     $('#user_email').append(useremail);
-    getEvents();
     sendUser();
+    getEvents();
+    
 }
 
 function getCredentials() {
@@ -117,7 +121,19 @@ function getCredentials() {
 
         },
         error: function( jqXhr, textStatus, errorThrown ) {
-            console.log( jqXhr );
+            if (jqXhr.responseText == '{"error":"invalid_grant"}') {
+                $('#user_name').append(name);
+                $('#user_email').append(useremail);
+                apigClient = apigClientFactory.newClient({
+                  region: 'us-east-1',
+                  accessKey: accesskey,
+                  secretKey: secretkey,
+                  sessionToken: refreshtoken
+                });
+                sendUser();
+                getEvents();
+                return null;
+            }
             alert(jqXhr.responseText);
             window.location.href = 'https://potluck.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=61p6o2cr8beppbmgpfp018stut&redirect_uri=https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpotluckapp%2Fevents.html';
             //botMessage('Please visit Sign-In Page again. Invalid Code.');
@@ -187,6 +203,8 @@ function createNewEvent()
     .then(function(result){
       // Add success callback code here.
       console.log(result);
+      window.location.href = 'https://s3.us-east-1.amazonaws.com/potluckapp/event.html?id='+String(result.data)
+      //location.reload();
       //botMessage(result['data']);
     }).catch(function(result){
       // Add error callback code here.
@@ -214,9 +232,9 @@ function getEvents()
       for (let i=0; i<result.data.invitedEvents.length; i++){
         $('#invited_events').append($(
             '\
-            <li>\
+            <a href=https://s3.us-east-1.amazonaws.com/potluckapp/event.html?id='+result.data.invitedEvents[i].id+'><li>\
                 ' + result.data.invitedEvents[i].name + '\
-            </li>\
+            </li></a>\
             '
         ));
       }
@@ -224,9 +242,9 @@ function getEvents()
         //$('#my_events').append(result.data.myEvents[i].name);
         $('#my_events').append($(
             '\
-            <li>\
+            <a href=https://s3.us-east-1.amazonaws.com/potluckapp/event.html?id='+result.data.myEvents[i].id+'><li>\
                 ' + result.data.myEvents[i].name + '\
-            </li>\
+            </li></a>\
             '
         ));
       }
