@@ -28,8 +28,7 @@ else if (seconds - Number(lastrefresh) >= 3600) {
         getCredentials();
         //$('#user_name').append(name);
         //$('#user_email').append(useremail);
-        sendUser();
-        getEvents();
+        location.reload();
     }
 }
 else {
@@ -188,7 +187,7 @@ function createNewEvent()
         "eventTime": $('#event_time').val(),
         "location": $('#event_loc').val(),
         "email": useremail,
-        "eventDate": $('event_date').val()
+        "eventDate": $('#event_date').val()
     };
 
     var additionalParams = {
@@ -208,7 +207,8 @@ function createNewEvent()
       //botMessage(result['data']);
     }).catch(function(result){
       // Add error callback code here.
-      console.log(result)
+      console.log(result);
+      alert('please retry again');
       //botMessage(result['data']);
     });
 }
@@ -262,4 +262,10 @@ function hasNull(target) {
             return true;
     }
     return false;
+}
+
+function sign_out()
+{
+    localStorage.clear();
+    window.location.href = 'https://s3.us-east-1.amazonaws.com/potluckapp/index.html';
 }
