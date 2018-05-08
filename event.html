@@ -4,11 +4,11 @@
  <link href="https://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
  <link rel="stylesheet" href="https://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="main.css">
-  <script  src="index.js"></script>
-  <script src="event.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="main.css">
+ <script  src="index.js"></script>
+ <script src="event.js"></script>
 </head>
 <body>
   <div id="particles-js"></div> <!-- stats - count particles --> <!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib --> <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
@@ -34,80 +34,72 @@
    </nav><!-- /.navbar -->
  </div>
 
-<div class="container-fluid main-container">
-  <div class="col-md-6 sidebar">
+ <div class="container-fluid main-container">
+  <div class="col-md-12 sidebar">
     <div class="myevents">
-    <ul class="nav nav-pills nav-stacked">
-      <li class="sidebar active"><a href="#"> Create Event </a> </li>
-    </ul>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="sidebar active"><a href="#"> Event Name </a> </li>
+      </ul>
     </div>
     <br>
   </div>
-  <div class="col-md-6 sidebar">
-    <div class="myevents">
-    <ul class="nav nav-pills nav-stacked">
-      <li class="sidebar active"><a href="#"> Event </a> </li>
-    </ul>
-    </div>
-    <br>
+
+<div class="col-md-12 content">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Event Information
+   </div>
+   <div class="panel-body data_size">
+    <p> Hosted by: </p>
+    <p> Location: </p>
+    <p> Time: </p>
+    <p> Event Type </p>
+    <p> Event Date </p>
+    <p> Number of People </p>
   </div>
+</div>
 </div> 
 
-  <div class="col-md-12 content">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-       Event Name
-      </div>
-      <div class="panel-body data_size">
-        <p> Hosted by: </p>
-        <p> Location: </p>
-        <p> Time: </p>
-        <p> Event Type </p>
-        <p> Event Date </p>
-        <p> Number of People </p>
-      </div>
-    </div>
-  </div> 
-  <div class="col-md-8">
-    <input class="form-control" type="text" id ="input" placeholder ="Let's Party!">
-    <button id="item_add" type="button" onclick="add_item()" class="btn">Add Item</button>
-  </div>
-
-    <div class="col-md-12 content">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-       Items/Itinerary
-      </div>
-      <div class="panel-body data_size">
-          <ul style="list-style-type:none" class="list_group" id="list"> </ul>
-      </div>
-    </div>
-  </div> 
-
+<div class="col-md-12 content">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+     Items/Itinerary
+   </div>
+   <div class="panel-body data_size">
+    <ul style="list-style-type:none" class="list_group" id="list"> </ul>
     <div class="col-md-8">
-    <input class="form-control" type="text" id ="eventC" placeholder ="Your voice is needed!">
-    <button id="item_add" type="button" onclick="add_comment()" class="btn"> Add Comment</button>
-  </div>
-
-    <div class="col-md-12 content">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-       Event Comments
-      </div>
-      <div class="panel-body data_size">
-          <ul style="list-style-type:none" id="Eventlist"> </ul>
-           
-      </div>
+      <input class="form-control" type="text" id ="input" placeholder ="Let's Party!">
+      <button id="item_add" type="button" onclick="add_item()" class="btn">Add Item</button>
     </div>
   </div>
+</div>
+</div> 
+
+
+
+
+<div class="col-md-12 content">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+     Event Comments
+   </div>
+   <div class="panel-body data_size">
+    <ul style="list-style-type:none" id="Eventlist"> </ul>
+    <div class="col-md-8">
+      <input class="form-control" type="text" id ="eventC" placeholder ="Your voice is needed!">
+      <button id="item_add" type="button" onclick="add_comment()" class="btn"> Add Comment</button>
+    </div>  
+  </div>
+</div>
+</div>
 
 <!--Footer-->
 <footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
-    <div class="container text-center text-md-left">
-        <div class="row">
-    <div class="footer-copyright py-3 text-center whitetext">
+  <div class="container text-center text-md-left">
+    <div class="row">
+      <div class="footer-copyright py-3 text-center whitetext">
         Copyright 2018: By Josh, Candace, Gabriel and Fredrick
-    </div>
-</footer>
-<hr>
-</html>
+      </div>
+    </footer>
+    <hr>
+    </html>
