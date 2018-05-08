@@ -4,6 +4,22 @@
 	color:#FFFEFE;
 }
 
+a:link{
+  color:blue;
+}
+a:visited{
+  color:blue;
+}
+a:hover{
+  color:orange;
+}
+a:focus{
+  color:green;
+}
+a:active{
+  color:red;
+}
+
 
 .jumbotron {
   background-image:url('./potluck.png');
@@ -122,6 +138,30 @@ body{
 
 }
 
+.profile {
+  height: 130px;
+}
+
+.all_my_invited_events {
+  height: 305px;
+  overflow-y:auto;
+}
+
+.all_my_events {
+  height: 550px;
+  overflow-y:auto;
+}
+
+.event_info {
+  height: 200px;
+  overflow-y:auto;
+}
+
+.invited_guests {
+  height: 200px;
+  overflow-y:auto;
+}
+
 @keyframes sway {
   from { transform: translate3d(0px, 0, 0);     }
   to   { transform: translate3d(600px, 0, 0); }
@@ -129,6 +169,8 @@ body{
 
 #footer {
   background-color: #0084FF;
+  position:absolute;
+  bottom:0;
 }
 
 .whitetext {
@@ -208,5 +250,5 @@ input {
     cursor: pointer;
 }
 a:visited{
-  color:white;
+  color:blue;
 }
