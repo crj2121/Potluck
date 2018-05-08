@@ -4,6 +4,22 @@
 	color:#FFFEFE;
 }
 
+a:link{
+  color:blue;
+}
+a:visited{
+  color:purple;
+}
+a:hover{
+  color:orange;
+}
+a:focus{
+  color:green;
+}
+a:active{
+  color:red;
+}
+
 
 .jumbotron {
   background-image:url('./potluck.png');
