@@ -15,7 +15,7 @@ var secretkey = localStorage.getItem("potluck_secretkey");
 var refreshtoken = localStorage.getItem("potluck_refreshkey")
 var lastrefresh = localStorage.getItem("potluck_refreshtime");
 var name = localStorage.getItem("potluck_name");
-var useremail = localStorage.getItem("potluck_useremail")
+var useremail = localStorage.getItem("potluck_useremail");
 
 if (seconds - Number(lastrefresh) >= 3600) {
     if (getCode() == null) {
@@ -26,6 +26,7 @@ if (seconds - Number(lastrefresh) >= 3600) {
         $('#user_name').append(name);
         $('#user_email').append(useremail);
         getEvents();
+        sendUser();
     }
 }
 else {
@@ -39,6 +40,7 @@ else {
     $('#user_name').append(name);
     $('#user_email').append(useremail);
     getEvents();
+    sendUser();
 }
 
 function getCredentials() {
@@ -81,11 +83,7 @@ function getCredentials() {
                 secretkey = AWS.config.credentials.data.Credentials.SecretKey;
                 refreshtoken = AWS.config.credentials.data.Credentials.SessionToken;
                 lastrefresh = seconds;
-            });
-            
-            
-
-            
+            });        
             
             var userParams = {
               AccessToken: data.access_token /* required */
@@ -139,6 +137,18 @@ function getCode()
 
 function sendUser()
 {
+    var params = {
+    };
+
+    var body = {
+        "email": useremail,
+        "name": name,
+        "username": username
+    };
+
+    var additionalParams = {
+    };
+
     apigClient.verifyuserPost(params, body, additionalParams)
     .then(function(result){
       // Add success callback code here.
