@@ -42,13 +42,21 @@ else {
     getEventInfo();
 }
 
+function hasNull(target) {
+    for (var member in target) {
+        if (target[member] == "")
+            return true;
+    }
+    return false;
+}
+
 function getEventInfo()
 {
     var params = {
     };
 
     var body = {
-        "id": getId(),
+        "id": Number(getId()),
     };
 
     var additionalParams = {
@@ -66,7 +74,9 @@ function getEventInfo()
       //botMessage(result['data']);
     }).catch(function(result){
       // Add error callback code here.
-      console.log(result)
+      console.log(result);
+      alert('Not a valid event...')
+      window.location.href = 'https://s3.us-east-1.amazonaws.com/potluckapp/events.html';
       //botMessage(result['data']);
     });
 }
