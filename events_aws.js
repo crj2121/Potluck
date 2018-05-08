@@ -47,6 +47,7 @@ else {
     
 }
 
+
 function getCredentials() {
 
     $.ajax({

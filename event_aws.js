@@ -31,6 +31,7 @@ if (username == null || seconds - Number(lastrefresh) >= 3600) {
     alert('Please sign-in again');
     window.location.href = 'https://potluck.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=61p6o2cr8beppbmgpfp018stut&redirect_uri=https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpotluckapp%2Fevents.html';
 }
+
 else {
     apigClient = apigClientFactory.newClient({
                   region: 'us-east-1',
