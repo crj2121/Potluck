@@ -138,6 +138,19 @@ body{
 
 }
 
+.profile {
+  height: 130px;
+}
+
+.all_my_invited_events {
+  height: 305px;
+  overflow-y:auto;
+}
+
+.all_my_events {
+  height: 550px;
+  overflow-y:auto;
+}
 
 .event_info {
   height: 200px;

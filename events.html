@@ -34,20 +34,32 @@
 
 <div class="container-fluid main-container">
   <div class="col-md-3 sidebar">
-
     <div class="panel panel-default">
       <div class="panel-heading">
         Profile
       </div>
-      <div class="panel-body">
+      <div class="panel-body profile">
       <p id="user_name"> Name: </p>
         <p id="user_email"> Email: </p>
       </div>
     </div>
 
-     <button type="button" id="create_event" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Create Event</button>
+    <button type="button" id="create_event" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Create Event</button>
 
-     <div class="modal fade" id="myModal" role="dialog">
+    <br>
+    <br>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Invited Events
+      </div>
+      <div class="panel-body all_my_invited_events">
+      </div>
+    </div>
+
+
+
+    <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -84,7 +96,6 @@
                   <label for="time">Event Time:</label>
                   <input type="text" id="event_time" class="form-control" name="time">
                 </div>
-
             </div> 
         </div>
         <div class="modal-footer">
@@ -95,22 +106,7 @@
     </div>
   </div>
 
-
-    <div class="myevents">
-    </div>
     <br>
-    <div class="panel panel-default">
-      <div class="panel-heading"> Invited Events <span class="glyphicon glyphicon--plus-sign"></span> 
-        <ul id="invited_events">
-        </ul>
-      </div>
-      <form name="form" method="POST" action="/dashboard">
-        <div class="input-group input-group-sm">
-          <div class="input-group-btn">
-          </div>
-        </form>
-      </div>
-    </div>
   </div>
 
 
@@ -119,7 +115,7 @@
       <div class="panel-heading">
        My Events
       </div>
-      <div class="panel-body data_size">
+      <div class="panel-body all_my_events data_size">
         <ul id="my_events">
         </ul>
       </div>
