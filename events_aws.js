@@ -28,7 +28,7 @@ else if (seconds - Number(lastrefresh) >= 3600) {
         getCredentials();
         //$('#user_name').append(name);
         //$('#user_email').append(useremail);
-        location.reload();
+        
     }
 }
 else {
@@ -87,12 +87,13 @@ function getCredentials() {
                 secretkey = AWS.config.credentials.data.Credentials.SecretKey;
                 refreshtoken = AWS.config.credentials.data.Credentials.SessionToken;
                 lastrefresh = seconds;
+                location.reload();
             });        
             
             var userParams = {
               AccessToken: data.access_token /* required */
             };
-            console.log(userParams)
+            console.log(userParams);
 
             cognitoidentityserviceprovider.getUser(userParams, function(err, data) {
               if (err) console.log(err, err.stack); // an error occurred

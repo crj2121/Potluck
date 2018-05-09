@@ -1,23 +1,36 @@
+var seconds = new Date() / 1000;
+
 AWS.config.region = 'us-east-1';
 
 var cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
 
 var apigClient = null;
 
-var params = {
-};
+var username = localStorage.getItem("potluck_username");
+var accesskey = localStorage.getItem("potluck_accesskey");
+var secretkey = localStorage.getItem("potluck_secretkey");
+var refreshtoken = localStorage.getItem("potluck_refreshkey")
+var lastrefresh = localStorage.getItem("potluck_refreshtime");
+var name = localStorage.getItem("potluck_name");
+var useremail = localStorage.getItem("potluck_useremail");
+var eventowner = '';
 
-var user = null;
+if (username == null || seconds - Number(lastrefresh) >= 3600) {
+    alert('Please sign-in again');
+    window.location.href = 'https://potluck.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=61p6o2cr8beppbmgpfp018stut&redirect_uri=https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpotluckapp%2Fevents.html';
+}
+else {
+    apigClient = apigClientFactory.newClient({
+                  region: 'us-east-1',
+                  accessKey: accesskey,
+                  secretKey: secretkey,
+                  sessionToken: refreshtoken
+                });
+    $('#input-message').val('I want to make an event');
+    userMessage();
+}
 
-var body = {
-    "msg": "",
-    "userID": "",
-    "userEmail": "",
-    "username": ""
-};
 
-var additionalParams = {
-};
 
 function getCredentials() {
 
@@ -94,12 +107,6 @@ function botMessage(bot_message) {
 }
 
 function userMessage() {
-    
-    if ($('#input-message').val() == '') {
-        return false;
-    }
-
-    body["msg"] = $('#input-message').val();
 
     $('#feed').append($(
         '\
@@ -110,7 +117,7 @@ function userMessage() {
         '
     ));
     
-    $('#input-message').val('');
+    
     $('#feed').scrollTop(10000);
     sendMessage();
 }
@@ -128,9 +135,22 @@ function getCode()
 }
 
 function sendMessage() {
+    var params = {
+    };
+
+    var body = {
+          "msg": $('#input-message').val(),
+          "email": useremail
+      };
+
+    var additionalParams = {
+      };
+    
     if (apigClient == null) {
         botMessage('Please visit Sign-In Page again. Unable to verify identity.');
     }
+    $('#input-message').val('');
+
     apigClient.chatbotPost(params, body, additionalParams)
     .then(function(result){
       // Add success callback code here.
@@ -142,5 +162,3 @@ function sendMessage() {
       botMessage(result['data']);
     });
 }
-
-getCredentials()
