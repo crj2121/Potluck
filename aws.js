@@ -155,7 +155,14 @@ function sendMessage() {
     .then(function(result){
       // Add success callback code here.
       console.log(result);
-      botMessage(result['data']);
+      console.log(result['data']['errorType']);
+      if (result['data']['errorType']) {
+        botMessage('Your event has been created, go back to the homepage to see it!');
+      }
+      else {
+        botMessage(result['data']);
+      }
+      
     }).catch( function(result){
       // Add error callback code here.
       console.log(result)

@@ -298,6 +298,37 @@ function add_user_to_item(name)
 
 }
 
+function getName(email)
+{
+  var params = {
+  };
+
+  var body = {
+      "email": email
+  };
+
+  var additionalParams = {
+  };
+
+  if (hasNull(body)) {
+      return;
+  }
+
+  apigClient.getnamefromemailPost(params, body, additionalParams)
+    .then(function(result){
+      // Add success callback code here.
+      console.log(result);
+      return result['data']
+      //botMessage(result['data']);
+    }).catch(function(result){
+      // Add error callback code here.
+      console.log(result);
+      //botMessage(result['data']);
+    });
+
+
+}
+
 function sign_out()
 {
     localStorage.clear();

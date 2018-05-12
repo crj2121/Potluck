@@ -407,6 +407,42 @@ apigClientFactory.newClient = function (config) {
     };
     
     
+    apigClient.getnamefromemailPost = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var getnamefromemailPostRequest = {
+            verb: 'post'.toUpperCase(),
+            path: pathComponent + uritemplate('/getnamefromemail').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(getnamefromemailPostRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.getnamefromemailOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var getnamefromemailOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/getnamefromemail').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(getnamefromemailOptionsRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
     apigClient.inviteuserPost = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
